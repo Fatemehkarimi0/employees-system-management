@@ -247,6 +247,55 @@ class Employee :
         table_frame.place(x=0,y=60,width=1470,height=170)
         
         
+        scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
+        scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
+
+        self.employee_table=ttk.Treeview(table_frame,column=("dep","name","degi","email","address","married","dob","doj","idproofcomb","idproof","gender","phone","country","salary",),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+
+        scroll_x.pack(side=BOTTOM,fill=x)
+        scroll_y.pack(side=RIGHT,fill=y)
+
+        scroll_x.config(command=self.employee_table.xview)
+        scroll_y.config(command=self.employee_table.yview)
+
+        self.employee_table.heading('dep',text='Department')
+        self.employee_table.heading('name',text='Name')
+        self.employee_table.heading('degi',text='Degignition')
+        self.employee_table.heading('email',text='Email')
+        self.employee_table.heading('address',text='Address')
+        self.employee_table.heading('married',text='Married Status')
+        self.employee_table.heading('dob',text='DOB')
+        self.employee_table.heading('doj',text='DOJ')
+        self.employee_table.heading('idproofcomb',text='ID Type')
+        self.employee_table.heading('idproof',text='ID Proof')
+        self.employee_table.heading('gender',text='Gender')
+        self.employee_table.heading('phone',text='Phone')
+        self.employee_table.heading('country',text='Country')
+        self.employee_table.heading('salary',text='Salary')
+       
+        self.employee_table['show']='headings'
+
+        self.employee_table.column("dep",width=100)
+        self.employee_table.column("name",width=100)
+        self.employee_table.column("degi",width=100)
+        self.employee_table.column("email",width=100)
+        self.employee_table.column("address",width=100)
+        self.employee_table.column("married",width=100)
+        self.employee_table.column("dob",width=100)
+        self.employee_table.column("doj",width=100)
+        self.employee_table.column("idproofcomb",width=100)
+        self.employee_table.column("idproof",width=100)
+        self.employee_table.column("gender",width=100)
+        self.employee_table.column("phone",width=100)
+        self.employee_table.column("country",width=100)
+        self.employee_table.column("salary",width=100)
+
+
+        self.employee_table.pack(fill=BOTH,expand=1)
+
+
+
+        
         
         
         

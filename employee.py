@@ -185,14 +185,27 @@ class Employee :
         self.image_mask=Label(upper_frame,image=self.photomask)
         self.image_mask.place(x=1000,y=0,width=220,height=220)
 
+        # Button Frame
+        button_frame=Frame(upper_frame,bd=2,relief=RIDGE,bg='white')
+        button_frame.place(x=12,y=10,width=170,height=210)
+        
 
+        btn_add=Button(button_frame,text="Save",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
+        btn_add.grid(row=0,column=0,padx=1,pady=5)
+
+        btn_update=Button(button_frame,text="Update",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
+        btn_update.grid(row=1,column=0,padx=1,pady=5) 
+        
+        btn_delete=Button(button_frame,text="Delete",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
+        btn_delete.grid(row=2,column=0,padx=1,pady=5)
+
+        btn_clear=Button(button_frame,text="Clear",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
+        btn_clear.grid(row=3,column=0,padx=1,pady=5)
+        
+        
         # down Frame
         down_frame=LabelFrame(Main_frame,bd=2,relief=RIDGE,bg='white',text='Employee Information Table', font=('times new roman ',11 ,'bold'),fg='red')
         down_frame.place(x=10,y=280,width=1480,height=270)
-        
-        
-        
-        
         
         
         

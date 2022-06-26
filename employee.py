@@ -15,7 +15,7 @@ class Employee :
         lbl_title.place(x=0,y=0,width=1530,height=50)
         
         #we should add Image folder
-        img_logo = Image.open('college_Images/name of image')
+        img_logo_mask = Image.open('college_Images/name of image')
         img_logo=img_logo.resize((50,50),Image.ANTIALIAS)
         self.photo_logo=ImageTk.PhotoImage(img_logo)    
         self.logo=Label(self.root,image=self.photo_logo)
@@ -172,7 +172,7 @@ class Employee :
 
         # CTC
         lbl_ctc=Label(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
-        lbl_country.gride(row=2,column=4,sticky=W,padx=2,pady=7)
+        lbl_ctc.gride(row=2,column=4,sticky=W,padx=2,pady=7)
 
         txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=2,column=5,padx=2,pady=7)
@@ -206,6 +206,50 @@ class Employee :
         # down Frame
         down_frame=LabelFrame(Main_frame,bd=2,relief=RIDGE,bg='white',text='Employee Information Table', font=('times new roman ',11 ,'bold'),fg='red')
         down_frame.place(x=10,y=280,width=1480,height=270)
+        
+        #search Frame
+        search_frame=LabelFrame(down_frame,bd=2,relief=RIDGE,bg='white',text='search Employee Information', font=('times new roman ',11 ,'bold'),fg='white')
+        search_frame.place(x=0,y=0,width=1470,height=60)
+        
+        search_by=Label(search_by,text='Search by : ',font=('arial ',11,'bold'),bg='red',fg='white')
+        search_by.grid(row=0,column=0,sticky=W,padx=5)
+        
+        
+        #Search 
+        self.var_com_search= StringVar()
+        com_txt_search=ttk.Combobox(search_frame,state="readonly",font=('arial',12,'bold'), width=18)
+        com_txt_search['Value']=('Select Option ','Phone','idProof')
+        com_txt_search.current(0)
+        com_txt_search.grid(row=0,column=1,sticky=W,padx=5)
+        
+        txt_search=ttk.Entry(search_frame,width=22,font=('arial',11,'bold'))
+        txt_search.grid(row=0,column=2,padx=5)
+
+        btn_search=Button(search_frame,text="search",font=('arial ',11,'bold'),width=14,bg='blue',fg='white')
+        btn_search.grid(row=0,column=3,padx=5)
+        
+        btn_ShowAll=Button(search_frame,text="ShowAll",font=('arial ',11,'bold'),width=14,bg='blue',fg='white')
+        btn_ShowAll.grid(row=0,column=4,padx=5)
+        
+        Stayhome=LabelFrame(search_frame,bg='white',text='Stay Home', font=('times new roman ',11 ,'bold'),fg='red')
+        Stayhome.place(x=780,y=0,width=600,height=30)
+        
+        img_logo_mask = Image.open(r'college_Images/name of image')
+        img_logo_mask=img_logo_mask.resize((50,50),Image.ANTIALIAS)
+        self.photo_logo_mask=ImageTk.PhotoImage(img_logo_mask)    
+        self.logo=Label(self.root,image=self.photo_logo_mask)
+        self.logo.place(x=900,y=0,width=50,height=30)
+        
+        
+        # == Employee Table ==
+        # Table Frame
+        table_frame=Frame(down_frame,bd=3,relief=RIDGE)
+        table_frame.place(x=0,y=60,width=1470,height=170)
+        
+        
+        
+        
+        
         
         
         

@@ -1,12 +1,12 @@
 from tkinter import *
 from tkinter import ttk
-from turtle import title
+# from turtle import title
 from PIL import Image,ImageTk
 
 class Employee :
     def __init__(self,root) :
         self.root=root
-        self.root.geometry("1530x790+070")
+        self.root.geometry("1530x790")
         #main title
         self.root.title("Emploeey system management")
         
@@ -15,8 +15,8 @@ class Employee :
         lbl_title.place(x=0,y=0,width=1530,height=50)
         
         #we should add Image folder
-        img_logo_mask = Image.open('college_Images/name of image')
-        img_logo=img_logo.resize((50,50),Image.ANTIALIAS)
+        img_logo = Image.open('college_Images/safari1.jpg')
+        img_logo=img_logo.resize((50,50),Image.Resampling.LANCZOS)
         self.photo_logo=ImageTk.PhotoImage(img_logo)    
         self.logo=Label(self.root,image=self.photo_logo)
         self.logo.place(x=270,y=0,width=50,height=50)
@@ -27,24 +27,24 @@ class Employee :
         
         #fix path of image
         #first image header
-        img1 = Image.open('college_Images/name of image')
-        img1=img1.resize((540,160),Image.ANTIALIAS)
+        img1 = Image.open('college_Images/safari1.jpg')
+        img1=img1.resize((540,160),Image.Resampling.LANCZOS)
         self.photo1=ImageTk.PhotoImage(img1)    
         
         self.image_1=Label(img_frame,image=self.photo1)
         self.image_1.place(x=0,y=0,width=540,height=160)
          
         #2nd image header
-        img2 = Image.open('college_Images/name of image')
-        img2=img2.resize((540,160),Image.ANTIALIAS)
+        img2 = Image.open('college_Images/safari2.jpg')
+        img2=img2.resize((540,160),Image.Resampling.LANCZOS)
         self.photo2=ImageTk.PhotoImage(img2)    
         
         self.image_2=Label(img_frame,image=self.photo2)
         self.image_2.place(x=540,y=0,width=540,height=160)
         
         #third image header
-        img3 = Image.open('college_Images/name of image')
-        img3=img3.resize((540,160),Image.ANTIALIAS)
+        img3 = Image.open('college_Images/safari3.jpg')
+        img3=img3.resize((540,160),Image.Resampling.LANCZOS)
         self.photo3=ImageTk.PhotoImage(img3)   
          
         self.image_3=Label(self.root,image=self.photo3)
@@ -63,18 +63,18 @@ class Employee :
 
         # Labels and Entry fields
         lbl_dep=Label(upper_frame,text='Department', font=('arial ',11 ,'bold'),fg='white')
-        lbl_dep.gride(row=0,column=0,padx=2,sticky=W)
+        lbl_dep.grid(row=0,column=0,padx=2,sticky=W)
 
 
         combo_dep=ttk.Combobox(upper_frame,font=('arial ',12 ,'bold'),width=17,state='readonly')
         combo_dep['value']=('Select Depatment','HR','Software Engineer','Manager')
         combo_dep.current(0)
-        combo_dep.gride(row=0,column=1,padx=2,pady=10,sticky=W)
+        combo_dep.grid(row=0,column=1,padx=2,pady=10,sticky=W)
 
 
         # Name
         lbl_Name=Label(upper_frame,font=('arial ',12 ,'bold'),text="Name:",bg='white')
-        lbl_Name.gride(row=0,column=2,sticky=W,padx=2,pady=7)
+        lbl_Name.grid(row=0,column=2,sticky=W,padx=2,pady=7)
 
         txt_name=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_name.grid(row=0,column=3,padx=2,pady=7)
@@ -82,7 +82,7 @@ class Employee :
 
         # lbl_Designition
         lbl_Designition=Label(upper_frame,font=('arial ',12 ,'bold'),text="Designition:",bg='white')
-        lbl_Designition.gride(row=1,column=0,sticky=W,padx=2,pady=7)
+        lbl_Designition.grid(row=1,column=0,sticky=W,padx=2,pady=7)
 
         txt_Designition=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_Designition.grid(row=1,column=1,sticky=W,padx=2,pady=7)
@@ -90,7 +90,7 @@ class Employee :
 
         # Email
         lbl_email=Label(upper_frame,font=('arial ',12 ,'bold'),text="Email:",bg='white')
-        lbl_email.gride(row=1,column=2,sticky=W,padx=2,pady=7)
+        lbl_email.grid(row=1,column=2,sticky=W,padx=2,pady=7)
 
         txt_email=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_email.grid(row=1,column=3,padx=2,pady=7)
@@ -98,7 +98,7 @@ class Employee :
 
         # Address
         lbl_address=Label(upper_frame,font=('arial ',12 ,'bold'),text="Address:",bg='white')
-        lbl_address.gride(row=2,column=0,sticky=W,padx=2,pady=7)
+        lbl_address.grid(row=2,column=0,sticky=W,padx=2,pady=7)
 
         txt_address=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_address.grid(row=2,column=1,padx=2,pady=7)
@@ -106,18 +106,18 @@ class Employee :
 
         # Married
         lbl_married_status=Label(upper_frame,font=('arial ',12 ,'bold'),text="Married Status:",bg='white')
-        lbl_married_status.gride(row=2,column=2,sticky=W,padx=2,pady=7)
+        lbl_married_status.grid(row=2,column=2,sticky=W,padx=2,pady=7)
 
         com_txt_married=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=17)
 
         com_txt_married['value']=("Married","Unmarried")
         com_txt_married.current(0)
-        com_txt_married.grid(row=2,colun=3,sticky=W,padx=2,pady=7)
+        com_txt_married.grid(row=2,column=3,sticky=W,padx=2,pady=7)
 
       
         # Dob
         lbl_dob=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOB:",bg='white')
-        lbl_dob.gride(row=3,column=0,sticky=W,padx=2,pady=7)
+        lbl_dob.grid(row=3,column=0,sticky=W,padx=2,pady=7)
 
         txt_dob=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_dob.grid(row=3,column=1,padx=2,pady=7)
@@ -125,7 +125,7 @@ class Employee :
 
        # Doj
         lbl_doj=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOJ:",bg='white')
-        lbl_doj.gride(row=3,column=2,sticky=W,padx=2,pady=7)
+        lbl_doj.grid(row=3,column=2,sticky=W,padx=2,pady=7)
 
         txt_doj=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_doj.grid(row=3,column=3,padx=2,pady=7)
@@ -140,12 +140,12 @@ class Employee :
         com_txt_proof.grid(row=4,column=0,sticky=W,padx=2,pady=7)
 
         txt_proof=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
-        txt_proof.gride(row=4,column=1,padx=2,pady=7)
+        txt_proof.grid(row=4,column=1,padx=2,pady=7)
 
 
         # gender
         lbl_gender=Label(upper_frame,font=('arial ',12 ,'bold'),text="gender:",bg='white')
-        lbl_gender.gride(row=4,column=2,sticky=W,padx=2,pady=7)
+        lbl_gender.grid(row=4,column=2,sticky=W,padx=2,pady=7)
 
         com_txt_gender=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=22)
 
@@ -156,7 +156,7 @@ class Employee :
 
         # phone
         lbl_phone=Label(upper_frame,font=('arial ',12 ,'bold'),text="Phone No:",bg='white')
-        lbl_phone.gride(row=4,column=4,sticky=W,padx=2,pady=7)
+        lbl_phone.grid(row=4,column=4,sticky=W,padx=2,pady=7)
 
         txt_phone=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_phone.grid(row=0,column=5,padx=2,pady=7)
@@ -164,7 +164,7 @@ class Employee :
 
         # country
         lbl_country=Label(upper_frame,font=('arial ',12 ,'bold'),text="Country:",bg='white')
-        lbl_country.gride(row=1,column=4,sticky=W,padx=2,pady=7)
+        lbl_country.grid(row=1,column=4,sticky=W,padx=2,pady=7)
 
         txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=1,column=5,padx=2,pady=7)
@@ -172,14 +172,14 @@ class Employee :
 
         # CTC
         lbl_ctc=Label(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
-        lbl_ctc.gride(row=2,column=4,sticky=W,padx=2,pady=7)
+        lbl_ctc.grid(row=2,column=4,sticky=W,padx=2,pady=7)
 
         txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=2,column=5,padx=2,pady=7)
 
         # mask image
-        img_mask = Image.open('college_Images/name of image')
-        img_mask= img_mask.resize((220,220),Image.ANTIALIAS)
+        img_mask = Image.open('college_Images/safari1.jpg')
+        img_mask= img_mask.resize((220,220),Image.Resampling.LANCZOS)
         self.photomask=ImageTk.PhotoImage(img_mask)    
         
         self.image_mask=Label(upper_frame,image=self.photomask)
@@ -211,14 +211,14 @@ class Employee :
         search_frame=LabelFrame(down_frame,bd=2,relief=RIDGE,bg='white',text='search Employee Information', font=('times new roman ',11 ,'bold'),fg='white')
         search_frame.place(x=0,y=0,width=1470,height=60)
         
-        search_by=Label(search_by,text='Search by : ',font=('arial ',11,'bold'),bg='red',fg='white')
+        search_by=Label(down_frame,text='Search by : ',font=('arial ',11,'bold'),bg='red',fg='white')
         search_by.grid(row=0,column=0,sticky=W,padx=5)
         
         
         #Search 
         self.var_com_search= StringVar()
         com_txt_search=ttk.Combobox(search_frame,state="readonly",font=('arial',12,'bold'), width=18)
-        com_txt_search['Value']=('Select Option ','Phone','idProof')
+        com_txt_search['value']=('Select Option ','Phone','idProof')
         com_txt_search.current(0)
         com_txt_search.grid(row=0,column=1,sticky=W,padx=5)
         
@@ -234,11 +234,11 @@ class Employee :
         Stayhome=LabelFrame(search_frame,bg='white',text='Stay Home', font=('times new roman ',11 ,'bold'),fg='red')
         Stayhome.place(x=780,y=0,width=600,height=30)
         
-        img_logo_mask = Image.open(r'college_Images/name of image')
-        img_logo_mask=img_logo_mask.resize((50,50),Image.ANTIALIAS)
+        img_logo_mask = Image.open(r'college_Images/safari2.jpg')
+        img_logo_mask=img_logo_mask.resize((50,50),Image.Resampling.LANCZOS)
         self.photo_logo_mask=ImageTk.PhotoImage(img_logo_mask)    
         self.logo=Label(self.root,image=self.photo_logo_mask)
-        self.logo.place(x=900,y=0,width=50,height=30)
+        self.logo.place(x=900,y=500,width=50,height=30)
         
         
         # == Employee Table ==
@@ -254,6 +254,6 @@ class Employee :
         
         
 if __name__ == "__main__" : 
-    root=TK()
+    root=Tk()
     obj= Employee(root)
     root.mainloop()

@@ -50,7 +50,7 @@ class Employee :
         self.image_3=Label(self.root,image=self.photo3)
         self.image_3.place(x=1000,y=0,width=540,height=160)
         
-        
+          
         # Main Frame
         Main_frame=Frame(self.root,bd=2,relief=RIDGE,bg='white')
         Main_frame.place(x=10,y=220,width=1500,height=560)
@@ -62,7 +62,7 @@ class Employee :
         
 
         # Labels and Entry fields
-        lbl_dep=Lable(upper_frame,text='Department', font=('arial ',11 ,'bold'),fg='white')
+        lbl_dep=Label(upper_frame,text='Department', font=('arial ',11 ,'bold'),fg='white')
         lbl_dep.gride(row=0,column=0,padx=2,sticky=W)
 
 
@@ -73,7 +73,7 @@ class Employee :
 
 
         # Name
-        lbl_Name=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Name:",bg='white')
+        lbl_Name=Label(upper_frame,font=('arial ',12 ,'bold'),text="Name:",bg='white')
         lbl_Name.gride(row=0,column=2,sticky=W,padx=2,pady=7)
 
         txt_name=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
@@ -81,7 +81,7 @@ class Employee :
 
 
         # lbl_Designition
-        lbl_Designition=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Designition:",bg='white')
+        lbl_Designition=Label(upper_frame,font=('arial ',12 ,'bold'),text="Designition:",bg='white')
         lbl_Designition.gride(row=1,column=0,sticky=W,padx=2,pady=7)
 
         txt_Designition=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
@@ -89,7 +89,7 @@ class Employee :
 
 
         # Email
-        lbl_email=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Email:",bg='white')
+        lbl_email=Label(upper_frame,font=('arial ',12 ,'bold'),text="Email:",bg='white')
         lbl_email.gride(row=1,column=2,sticky=W,padx=2,pady=7)
 
         txt_email=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
@@ -97,7 +97,7 @@ class Employee :
 
 
         # Address
-        lbl_address=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Address:",bg='white')
+        lbl_address=Label(upper_frame,font=('arial ',12 ,'bold'),text="Address:",bg='white')
         lbl_address.gride(row=2,column=0,sticky=W,padx=2,pady=7)
 
         txt_address=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
@@ -105,7 +105,7 @@ class Employee :
 
 
         # Married
-        lbl_married_status=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Married Status:",bg='white')
+        lbl_married_status=Label(upper_frame,font=('arial ',12 ,'bold'),text="Married Status:",bg='white')
         lbl_married_status.gride(row=2,column=2,sticky=W,padx=2,pady=7)
 
         com_txt_married=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=17)
@@ -116,7 +116,7 @@ class Employee :
 
       
         # Dob
-        lbl_dob=Lable(upper_frame,font=('arial ',12 ,'bold'),text="DOB:",bg='white')
+        lbl_dob=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOB:",bg='white')
         lbl_dob.gride(row=3,column=0,sticky=W,padx=2,pady=7)
 
         txt_dob=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
@@ -124,7 +124,7 @@ class Employee :
 
 
        # Doj
-        lbl_doj=Lable(upper_frame,font=('arial ',12 ,'bold'),text="DOJ:",bg='white')
+        lbl_doj=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOJ:",bg='white')
         lbl_doj.gride(row=3,column=2,sticky=W,padx=2,pady=7)
 
         txt_doj=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
@@ -144,7 +144,7 @@ class Employee :
 
 
         # gender
-        lbl_gender=Lable(upper_frame,font=('arial ',12 ,'bold'),text="gender:",bg='white')
+        lbl_gender=Label(upper_frame,font=('arial ',12 ,'bold'),text="gender:",bg='white')
         lbl_gender.gride(row=4,column=2,sticky=W,padx=2,pady=7)
 
         com_txt_gender=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=22)
@@ -155,7 +155,7 @@ class Employee :
 
 
         # phone
-        lbl_phone=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Phone No:",bg='white')
+        lbl_phone=Label(upper_frame,font=('arial ',12 ,'bold'),text="Phone No:",bg='white')
         lbl_phone.gride(row=4,column=4,sticky=W,padx=2,pady=7)
 
         txt_phone=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
@@ -163,7 +163,7 @@ class Employee :
 
 
         # country
-        lbl_country=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Country:",bg='white')
+        lbl_country=Label(upper_frame,font=('arial ',12 ,'bold'),text="Country:",bg='white')
         lbl_country.gride(row=1,column=4,sticky=W,padx=2,pady=7)
 
         txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
@@ -171,16 +171,25 @@ class Employee :
 
 
         # CTC
-        lbl_ctc=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
+        lbl_ctc=Label(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
         lbl_country.gride(row=2,column=4,sticky=W,padx=2,pady=7)
 
         txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=2,column=5,padx=2,pady=7)
 
+        # mask image
+        img_mask = Image.open('college_Images/name of image')
+        img_mask= img_mask.resize((220,220),Image.ANTIALIAS)
+        self.photomask=ImageTk.PhotoImage(img_mask)    
+        
+        self.image_mask=Label(upper_frame,image=self.photomask)
+        self.image_mask.place(x=1000,y=0,width=220,height=220)
+
 
         # down Frame
         down_frame=LabelFrame(Main_frame,bd=2,relief=RIDGE,bg='white',text='Employee Information Table', font=('times new roman ',11 ,'bold'),fg='red')
         down_frame.place(x=10,y=280,width=1480,height=270)
+        
         
         
         

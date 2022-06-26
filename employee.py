@@ -63,18 +63,18 @@ class Employee :
 
         # Labels and Entry fields
         lbl_dep=Label(upper_frame,text='Department', font=('arial ',11 ,'bold'),fg='white')
-        lbl_dep.gride(row=0,column=0,padx=2,sticky=W)
+        lbl_dep.grid(row=0,column=0,padx=2,sticky=W)
 
 
         combo_dep=ttk.Combobox(upper_frame,font=('arial ',12 ,'bold'),width=17,state='readonly')
         combo_dep['value']=('Select Depatment','HR','Software Engineer','Manager')
         combo_dep.current(0)
-        combo_dep.gride(row=0,column=1,padx=2,pady=10,sticky=W)
+        combo_dep.grid(row=0,column=1,padx=2,pady=10,sticky=W)
 
 
         # Name
         lbl_Name=Label(upper_frame,font=('arial ',12 ,'bold'),text="Name:",bg='white')
-        lbl_Name.gride(row=0,column=2,sticky=W,padx=2,pady=7)
+        lbl_Name.grid(row=0,column=2,sticky=W,padx=2,pady=7)
 
         txt_name=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_name.grid(row=0,column=3,padx=2,pady=7)
@@ -82,7 +82,7 @@ class Employee :
 
         # lbl_Designition
         lbl_Designition=Label(upper_frame,font=('arial ',12 ,'bold'),text="Designition:",bg='white')
-        lbl_Designition.gride(row=1,column=0,sticky=W,padx=2,pady=7)
+        lbl_Designition.grid(row=1,column=0,sticky=W,padx=2,pady=7)
 
         txt_Designition=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_Designition.grid(row=1,column=1,sticky=W,padx=2,pady=7)
@@ -90,7 +90,7 @@ class Employee :
 
         # Email
         lbl_email=Label(upper_frame,font=('arial ',12 ,'bold'),text="Email:",bg='white')
-        lbl_email.gride(row=1,column=2,sticky=W,padx=2,pady=7)
+        lbl_email.grid(row=1,column=2,sticky=W,padx=2,pady=7)
 
         txt_email=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_email.grid(row=1,column=3,padx=2,pady=7)
@@ -98,7 +98,7 @@ class Employee :
 
         # Address
         lbl_address=Label(upper_frame,font=('arial ',12 ,'bold'),text="Address:",bg='white')
-        lbl_address.gride(row=2,column=0,sticky=W,padx=2,pady=7)
+        lbl_address.grid(row=2,column=0,sticky=W,padx=2,pady=7)
 
         txt_address=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_address.grid(row=2,column=1,padx=2,pady=7)
@@ -106,7 +106,7 @@ class Employee :
 
         # Married
         lbl_married_status=Label(upper_frame,font=('arial ',12 ,'bold'),text="Married Status:",bg='white')
-        lbl_married_status.gride(row=2,column=2,sticky=W,padx=2,pady=7)
+        lbl_married_status.grid(row=2,column=2,sticky=W,padx=2,pady=7)
 
         com_txt_married=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=17)
 
@@ -117,7 +117,7 @@ class Employee :
       
         # Dob
         lbl_dob=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOB:",bg='white')
-        lbl_dob.gride(row=3,column=0,sticky=W,padx=2,pady=7)
+        lbl_dob.grid(row=3,column=0,sticky=W,padx=2,pady=7)
 
         txt_dob=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_dob.grid(row=3,column=1,padx=2,pady=7)
@@ -125,7 +125,7 @@ class Employee :
 
        # Doj
         lbl_doj=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOJ:",bg='white')
-        lbl_doj.gride(row=3,column=2,sticky=W,padx=2,pady=7)
+        lbl_doj.grid(row=3,column=2,sticky=W,padx=2,pady=7)
 
         txt_doj=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
         txt_doj.grid(row=3,column=3,padx=2,pady=7)
@@ -140,12 +140,12 @@ class Employee :
         com_txt_proof.grid(row=4,column=0,sticky=W,padx=2,pady=7)
 
         txt_proof=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
-        txt_proof.gride(row=4,column=1,padx=2,pady=7)
+        txt_proof.grid(row=4,column=1,padx=2,pady=7)
 
 
         # gender
         lbl_gender=Label(upper_frame,font=('arial ',12 ,'bold'),text="gender:",bg='white')
-        lbl_gender.gride(row=4,column=2,sticky=W,padx=2,pady=7)
+        lbl_gender.grid(row=4,column=2,sticky=W,padx=2,pady=7)
 
         com_txt_gender=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=22)
 
@@ -156,7 +156,7 @@ class Employee :
 
         # phone
         lbl_phone=Label(upper_frame,font=('arial ',12 ,'bold'),text="Phone No:",bg='white')
-        lbl_phone.gride(row=4,column=4,sticky=W,padx=2,pady=7)
+        lbl_phone.grid(row=4,column=4,sticky=W,padx=2,pady=7)
 
         txt_phone=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_phone.grid(row=0,column=5,padx=2,pady=7)
@@ -164,7 +164,7 @@ class Employee :
 
         # country
         lbl_country=Label(upper_frame,font=('arial ',12 ,'bold'),text="Country:",bg='white')
-        lbl_country.gride(row=1,column=4,sticky=W,padx=2,pady=7)
+        lbl_country.grid(row=1,column=4,sticky=W,padx=2,pady=7)
 
         txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=1,column=5,padx=2,pady=7)
@@ -172,7 +172,7 @@ class Employee :
 
         # CTC
         lbl_ctc=Label(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
-        lbl_ctc.gride(row=2,column=4,sticky=W,padx=2,pady=7)
+        lbl_ctc.grid(row=2,column=4,sticky=W,padx=2,pady=7)
 
         txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=2,column=5,padx=2,pady=7)

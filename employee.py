@@ -51,7 +51,136 @@ class Employee :
         self.image_3.place(x=1000,y=0,width=540,height=160)
         
         
+        # Main Frame
+        Main_frame=Frame(self.root,bd=2,relief=RIDGE,bg='white')
+        Main_frame.place(x=10,y=220,width=1500,height=560)
         
+        
+        # upper Frame
+        upper_frame=LabelFrame(Main_frame,bd=2,relief=RIDGE,bg='white',text='Employee Information', font=('times new roman ',11 ,'bold'),fg='red')
+        upper_frame.place(x=10,y=10,width=1480,height=270)
+        
+
+        # Labels and Entry fields
+        lbl_dep=Lable(upper_frame,text='Department', font=('arial ',11 ,'bold'),fg='white')
+        lbl_dep.gride(row=0,column=0,padx=2,sticky=W)
+
+
+        combo_dep=ttk.Combobox(upper_frame,font=('arial ',12 ,'bold'),width=17,state='readonly')
+        combo_dep['value']=('Select Depatment','HR','Software Engineer','Manager')
+        combo_dep.current(0)
+        combo_dep.gride(row=0,column=1,padx=2,pady=10,sticky=W)
+
+
+        # Name
+        lbl_Name=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Name:",bg='white')
+        lbl_Name.gride(row=0,column=2,sticky=W,padx=2,pady=7)
+
+        txt_name=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_name.grid(row=0,column=3,padx=2,pady=7)
+
+
+        # lbl_Designition
+        lbl_Designition=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Designition:",bg='white')
+        lbl_Designition.gride(row=1,column=0,sticky=W,padx=2,pady=7)
+
+        txt_Designition=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_Designition.grid(row=1,column=1,sticky=W,padx=2,pady=7)
+
+
+        # Email
+        lbl_email=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Email:",bg='white')
+        lbl_email.gride(row=1,column=2,sticky=W,padx=2,pady=7)
+
+        txt_email=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_email.grid(row=1,column=3,padx=2,pady=7)
+
+
+        # Address
+        lbl_address=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Address:",bg='white')
+        lbl_address.gride(row=2,column=0,sticky=W,padx=2,pady=7)
+
+        txt_address=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_address.grid(row=2,column=1,padx=2,pady=7)
+
+
+        # Married
+        lbl_married_status=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Married Status:",bg='white')
+        lbl_married_status.gride(row=2,column=2,sticky=W,padx=2,pady=7)
+
+        com_txt_married=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=17)
+
+        com_txt_married['value']=("Married","Unmarried")
+        com_txt_married.current(0)
+        com_txt_married.grid(row=2,colun=3,sticky=W,padx=2,pady=7)
+
+      
+        # Dob
+        lbl_dob=Lable(upper_frame,font=('arial ',12 ,'bold'),text="DOB:",bg='white')
+        lbl_dob.gride(row=3,column=0,sticky=W,padx=2,pady=7)
+
+        txt_dob=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_dob.grid(row=3,column=1,padx=2,pady=7)
+
+
+       # Doj
+        lbl_doj=Lable(upper_frame,font=('arial ',12 ,'bold'),text="DOJ:",bg='white')
+        lbl_doj.gride(row=3,column=2,sticky=W,padx=2,pady=7)
+
+        txt_doj=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_doj.grid(row=3,column=3,padx=2,pady=7)
+
+
+    
+        # Id Proof
+        com_txt_proof=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=22)
+
+        com_txt_proof['value']=("Select ID Proof","PAN CARD","DRIVING LICENSE")
+        com_txt_proof.current(0)
+        com_txt_proof.grid(row=4,column=0,sticky=W,padx=2,pady=7)
+
+        txt_proof=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_proof.gride(row=4,column=1,padx=2,pady=7)
+
+
+        # gender
+        lbl_gender=Lable(upper_frame,font=('arial ',12 ,'bold'),text="gender:",bg='white')
+        lbl_gender.gride(row=4,column=2,sticky=W,padx=2,pady=7)
+
+        com_txt_gender=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=22)
+
+        com_txt_gender['value']=("Male","Female","Other")
+        com_txt_gender.current(0)
+        com_txt_gender.grid(row=4,column=3,sticky=W,padx=2,pady=7)
+
+
+        # phone
+        lbl_phone=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Phone No:",bg='white')
+        lbl_phone.gride(row=4,column=4,sticky=W,padx=2,pady=7)
+
+        txt_phone=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
+        txt_phone.grid(row=0,column=5,padx=2,pady=7)
+
+
+        # country
+        lbl_country=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Country:",bg='white')
+        lbl_country.gride(row=1,column=4,sticky=W,padx=2,pady=7)
+
+        txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
+        txt_country.grid(row=1,column=5,padx=2,pady=7)
+
+
+        # CTC
+        lbl_ctc=Lable(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
+        lbl_country.gride(row=2,column=4,sticky=W,padx=2,pady=7)
+
+        txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
+        txt_country.grid(row=2,column=5,padx=2,pady=7)
+
+
+        # down Frame
+        down_frame=LabelFrame(Main_frame,bd=2,relief=RIDGE,bg='white',text='Employee Information Table', font=('times new roman ',11 ,'bold'),fg='red')
+        down_frame.place(x=10,y=280,width=1480,height=270)
         
         
         

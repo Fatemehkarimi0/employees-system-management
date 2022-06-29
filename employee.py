@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk
 # from turtle import title
 from PIL import Image,ImageTk
+import mysql.connector
+from tkinter import messagebox
 
 class Employee :
     def __init__(self,root) :
@@ -10,50 +12,67 @@ class Employee :
         #main title
         self.root.title("Emploeey system management")
         
+        
+        #====Variables======
+        self.var_dep = StringVar()
+        self.var_name = StringVar()
+        self.var_designition = StringVar()
+        self.var_email = StringVar()
+        self.var_address = StringVar()
+        self.var_married = StringVar()
+        self.var_dob = StringVar()
+        self.var_doj = StringVar()
+        self.var_idproofcomb = StringVar()
+        self.var_idproof = StringVar()
+        self.var_gender = StringVar()
+        self.var_phone = StringVar()
+        self.var_country = StringVar()
+        self.var_salary = StringVar()
+
         # title 
-        lbl_title=Label(self.root, text="EMPLOOYEE MANAGEMANT SYSTEM" , font=('times new roman ',37 ,'bold'),fg='darkblue',bg='white')
-        lbl_title.place(x=0,y=0,width=1530,height=50)
+        lbl_title=Label(self.root, text="سیستم مدیریت کارمندان اداره " , font=('times new roman ',35 ,'bold'),fg='darkblue',bg='white')
+        lbl_title.place(x=0,y=0,width=2530,height=50)
         
         #we should add Image folder
-        img_logo = Image.open('college_Images/safari1.jpg')
-        img_logo=img_logo.resize((50,50),Image.Resampling.LANCZOS)
-        self.photo_logo=ImageTk.PhotoImage(img_logo)    
-        self.logo=Label(self.root,image=self.photo_logo)
-        self.logo.place(x=270,y=0,width=50,height=50)
+        # img_logo = Image.open('college_Images/safari1.jpg')
+        # img_logo=img_logo.resize((50,50),Image.Resampling.LANCZOS)
+        # self.photo_logo=ImageTk.PhotoImage(img_logo)    
+        # self.logo=Label(self.root,image=self.photo_logo)
+        # self.logo.place(x=270,y=0,width=50,height=50)
         
-        #box of image
-        img_frame=Frame(self.root,bd=2,relief=RIDGE,bg='white')
-        img_frame.place(x=0,y=50,width=1530,height=160)
+        # #box of image
+        # img_frame=Frame(self.root,bd=2,relief=RIDGE,bg='white')
+        # img_frame.place(x=0,y=50,width=1530,height=160)
         
-        #fix path of image
-        #first image header
-        img1 = Image.open('college_Images/safari1.jpg')
-        img1=img1.resize((540,160),Image.Resampling.LANCZOS)
-        self.photo1=ImageTk.PhotoImage(img1)    
+        # #fix path of image
+        # #first image header
+        # img1 = Image.open('college_Images/safari1.jpg')
+        # img1=img1.resize((540,160),Image.Resampling.LANCZOS)
+        # self.photo1=ImageTk.PhotoImage(img1)    
         
-        self.image_1=Label(img_frame,image=self.photo1)
-        self.image_1.place(x=0,y=0,width=540,height=160)
+        # self.image_1=Label(img_frame,image=self.photo1)
+        # self.image_1.place(x=0,y=0,width=540,height=160)
          
-        #2nd image header
-        img2 = Image.open('college_Images/safari2.jpg')
-        img2=img2.resize((540,160),Image.Resampling.LANCZOS)
-        self.photo2=ImageTk.PhotoImage(img2)    
+        # #2nd image header
+        # img2 = Image.open('college_Images/safari2.jpg')
+        # img2=img2.resize((540,160),Image.Resampling.LANCZOS)
+        # self.photo2=ImageTk.PhotoImage(img2)    
         
-        self.image_2=Label(img_frame,image=self.photo2)
-        self.image_2.place(x=540,y=0,width=540,height=160)
+        # self.image_2=Label(img_frame,image=self.photo2)
+        # self.image_2.place(x=540,y=0,width=540,height=160)
         
-        #third image header
-        img3 = Image.open('college_Images/safari3.jpg')
-        img3=img3.resize((540,160),Image.Resampling.LANCZOS)
-        self.photo3=ImageTk.PhotoImage(img3)   
+        # #third image header
+        # img3 = Image.open('college_Images/safari3.jpg')
+        # img3=img3.resize((540,160),Image.Resampling.LANCZOS)
+        # self.photo3=ImageTk.PhotoImage(img3)   
          
-        self.image_3=Label(self.root,image=self.photo3)
-        self.image_3.place(x=1000,y=0,width=540,height=160)
+        # self.image_3=Label(self.root,image=self.photo3)
+        # self.image_3.place(x=1000,y=0,width=540,height=160)
         
           
         # Main Frame
         Main_frame=Frame(self.root,bd=2,relief=RIDGE,bg='white')
-        Main_frame.place(x=10,y=220,width=1500,height=560)
+        Main_frame.place(x=0,y=70,width=1500,height=560)
         
         
         # upper Frame
@@ -62,11 +81,11 @@ class Employee :
         
 
         # Labels and Entry fields
-        lbl_dep=Label(upper_frame,text='Department', font=('arial ',11 ,'bold'),fg='white')
+        lbl_dep=Label(upper_frame,text='Department', font=('arial ',11 ,'bold'),fg='black')
         lbl_dep.grid(row=0,column=0,padx=2,sticky=W)
 
 
-        combo_dep=ttk.Combobox(upper_frame,font=('arial ',12 ,'bold'),width=17,state='readonly')
+        combo_dep=ttk.Combobox(upper_frame,textvariable=self.var_dep,font=('arial ',12 ,'bold'),width=17,state='readonly')
         combo_dep['value']=('Select Depatment','HR','Software Engineer','Manager')
         combo_dep.current(0)
         combo_dep.grid(row=0,column=1,padx=2,pady=10,sticky=W)
@@ -76,7 +95,7 @@ class Employee :
         lbl_Name=Label(upper_frame,font=('arial ',12 ,'bold'),text="Name:",bg='white')
         lbl_Name.grid(row=0,column=2,sticky=W,padx=2,pady=7)
 
-        txt_name=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_name=ttk.Entry(upper_frame,textvariable=self.var_name,width=22, font=('arial ',11 ,'bold'))
         txt_name.grid(row=0,column=3,padx=2,pady=7)
 
 
@@ -84,7 +103,7 @@ class Employee :
         lbl_Designition=Label(upper_frame,font=('arial ',12 ,'bold'),text="Designition:",bg='white')
         lbl_Designition.grid(row=1,column=0,sticky=W,padx=2,pady=7)
 
-        txt_Designition=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_Designition=ttk.Entry(upper_frame,textvariable=self.var_designition,width=22, font=('arial ',11 ,'bold'))
         txt_Designition.grid(row=1,column=1,sticky=W,padx=2,pady=7)
 
 
@@ -92,7 +111,7 @@ class Employee :
         lbl_email=Label(upper_frame,font=('arial ',12 ,'bold'),text="Email:",bg='white')
         lbl_email.grid(row=1,column=2,sticky=W,padx=2,pady=7)
 
-        txt_email=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_email=ttk.Entry(upper_frame,textvariable=self.var_email,width=22, font=('arial ',11 ,'bold'))
         txt_email.grid(row=1,column=3,padx=2,pady=7)
 
 
@@ -100,7 +119,7 @@ class Employee :
         lbl_address=Label(upper_frame,font=('arial ',12 ,'bold'),text="Address:",bg='white')
         lbl_address.grid(row=2,column=0,sticky=W,padx=2,pady=7)
 
-        txt_address=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_address=ttk.Entry(upper_frame,textvariable=self.var_address,width=22, font=('arial ',11 ,'bold'))
         txt_address.grid(row=2,column=1,padx=2,pady=7)
 
 
@@ -108,8 +127,7 @@ class Employee :
         lbl_married_status=Label(upper_frame,font=('arial ',12 ,'bold'),text="Married Status:",bg='white')
         lbl_married_status.grid(row=2,column=2,sticky=W,padx=2,pady=7)
 
-        com_txt_married=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=17)
-
+        com_txt_married=ttk.Combobox(upper_frame,textvariable=self.var_married,state="readonly",font=('arial ',11 ,'bold'),width=17)
         com_txt_married['value']=("Married","Unmarried")
         com_txt_married.current(0)
         com_txt_married.grid(row=2,column=3,sticky=W,padx=2,pady=7)
@@ -119,7 +137,7 @@ class Employee :
         lbl_dob=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOB:",bg='white')
         lbl_dob.grid(row=3,column=0,sticky=W,padx=2,pady=7)
 
-        txt_dob=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_dob=ttk.Entry(upper_frame,textvariable=self.var_dob,width=22, font=('arial ',11 ,'bold'))
         txt_dob.grid(row=3,column=1,padx=2,pady=7)
 
 
@@ -127,19 +145,19 @@ class Employee :
         lbl_doj=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOJ:",bg='white')
         lbl_doj.grid(row=3,column=2,sticky=W,padx=2,pady=7)
 
-        txt_doj=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_doj=ttk.Entry(upper_frame,textvariable=self.var_doj,width=22, font=('arial ',11 ,'bold'))
         txt_doj.grid(row=3,column=3,padx=2,pady=7)
 
 
     
         # Id Proof
-        com_txt_proof=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=22)
+        com_txt_proof=ttk.Combobox(upper_frame,textvariable= self.var_idproofcomb,state="readonly",font=('arial ',11 ,'bold'),width=22)
 
         com_txt_proof['value']=("Select ID Proof","PAN CARD","DRIVING LICENSE")
         com_txt_proof.current(0)
         com_txt_proof.grid(row=4,column=0,sticky=W,padx=2,pady=7)
 
-        txt_proof=ttk.Entry(upper_frame,width=22, font=('arial ',11 ,'bold'))
+        txt_proof=ttk.Entry(upper_frame,textvariable= self.var_idproof,width=22, font=('arial ',11 ,'bold'))
         txt_proof.grid(row=4,column=1,padx=2,pady=7)
 
 
@@ -147,7 +165,7 @@ class Employee :
         lbl_gender=Label(upper_frame,font=('arial ',12 ,'bold'),text="gender:",bg='white')
         lbl_gender.grid(row=4,column=2,sticky=W,padx=2,pady=7)
 
-        com_txt_gender=ttk.Combobox(upper_frame,state="readonly",font=('arial ',11 ,'bold'),width=22)
+        com_txt_gender=ttk.Combobox(upper_frame,textvariable=self.var_gender,state="readonly",font=('arial ',11 ,'bold'),width=22)
 
         com_txt_gender['value']=("Male","Female","Other")
         com_txt_gender.current(0)
@@ -158,7 +176,7 @@ class Employee :
         lbl_phone=Label(upper_frame,font=('arial ',12 ,'bold'),text="Phone No:",bg='white')
         lbl_phone.grid(row=4,column=4,sticky=W,padx=2,pady=7)
 
-        txt_phone=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
+        txt_phone=ttk.Entry(upper_frame,textvariable=self.var_phone,font=('arial ',11 ,'bold'),width=22)
         txt_phone.grid(row=0,column=5,padx=2,pady=7)
 
 
@@ -166,7 +184,7 @@ class Employee :
         lbl_country=Label(upper_frame,font=('arial ',12 ,'bold'),text="Country:",bg='white')
         lbl_country.grid(row=1,column=4,sticky=W,padx=2,pady=7)
 
-        txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
+        txt_country=ttk.Entry(upper_frame,textvariable=self.var_country,font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=1,column=5,padx=2,pady=7)
 
 
@@ -174,20 +192,20 @@ class Employee :
         lbl_ctc=Label(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
         lbl_ctc.grid(row=2,column=4,sticky=W,padx=2,pady=7)
 
-        txt_country=ttk.Entry(upper_frame,font=('arial ',11 ,'bold'),width=22)
+        txt_country=ttk.Entry(upper_frame,textvariable=self.var_salary, font=('arial ',11 ,'bold'),width=22)
         txt_country.grid(row=2,column=5,padx=2,pady=7)
 
-        # mask image
-        img_mask = Image.open('college_Images/safari1.jpg')
-        img_mask= img_mask.resize((220,220),Image.Resampling.LANCZOS)
-        self.photomask=ImageTk.PhotoImage(img_mask)    
+        # # mask image
+        # img_mask = Image.open('college_Images/safari1.jpg')
+        # img_mask= img_mask.resize((220,220),Image.Resampling.LANCZOS)
+        # self.photomask=ImageTk.PhotoImage(img_mask)    
         
-        self.image_mask=Label(upper_frame,image=self.photomask)
-        self.image_mask.place(x=1000,y=0,width=220,height=220)
+        # self.image_mask=Label(upper_frame,image=self.photomask)
+        # self.image_mask.place(x=1000,y=0,width=220,height=220)
 
         # Button Frame
         button_frame=Frame(upper_frame,bd=2,relief=RIDGE,bg='white')
-        button_frame.place(x=12,y=10,width=170,height=210)
+        button_frame.place(x=1000,y=10,width=170,height=210)
         
 
         btn_add=Button(button_frame,text="Save",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
@@ -293,11 +311,50 @@ class Employee :
 
         self.employee_table.pack(fill=BOTH,expand=1)
 
-
-
+        #functions 
         
+    def add_data(self) : 
+        if self.var_dep.get() == ' ' or self.var_email.get() == '' :
+            messagebox.showerror('Error', 'همه رو پرکنید ')
+            
+        else : 
+            try:
+                conn=mysql.connector.connect(host='localhost',username='root',password='09384117841Ftm2001',_Database='`project data`')
+                my_cursor=conn.cursor
+                my_cursor.execute("inserted(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
+                                                                                            self.var_dep.get(),
+                                                                                            self.var_name.get(),
+                                                                                            self.var_designition.get(),
+                                                                                            self.var_email.get(),
+                                                                                            self.var_address.get(),
+                                                                                            self.var_married.get(),
+                                                                                            self.var_dob.get(),
+                                                                                            self.var_doj.get(),
+                                                                                            self.var_idproofcomb.get(),
+                                                                                            self.var_idproof.get(),
+                                                                                            self.var_gender.get(),
+                                                                                            self.var_phone.get(),
+                                                                                            self.var_country.get(),
+                                                                                            self.var_salary.get()  ) )
+                conn.commit()
+                conn.close()
+                messagebox.showinfo('success',parent=self.root)
+            except Exception as ex : 
+                messagebox.showerror('Error',f'Due to : {str(ex)}' ,parent=self.root )
         
-        
+    
+    #fetch  Data 
+    def fetch_data(self) : 
+        conn=mysql.connentor.connect(host='localhost', username='root',password='09384117841Ftm2001')
+        my_cursor =conn.cursor()
+        my_cursor.execute('select * from employee')
+        data=my_cursor.fetchall()
+        if len(data) != 0 :
+            self.employee_table(*self.employee_table.get_children())
+            for i in data :
+                self.employee_table.insert('',END,values=1)
+            conn.commit()
+        conn.close()
         
         
         

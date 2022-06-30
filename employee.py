@@ -399,23 +399,7 @@ class Employee :
                  conn=mysql.connector.connect(host='localhost',username='root',password='09384117841Ftm2001',_Database='`project data`')
                  my_cursor=conn.cursor()
                  my_cursor.execute('Update employee1 set Department=%s,Name=%s,Designition=%s,Address=%s,Married_status=%s,DOB=%s,DOJ=%s,id_proof_type=%s,Gender=%s,Phone=%s,Country=%s,Salary=%s where id_proof=%s',(
-
-
-                                                                                                                                                                                                                    self.var_dep.get(),
-                                                                                                                                                                                                                    self.var_name.get(),
-                                                                                                                                                                                                                    self.var_designition.get(),
-                                                                                                                                                                                                                    self.var_email.get(),
-                                                                                                                                                                                                                    self.var_address.get(),
-                                                                                                                                                                                                                    self.var_married.get(),
-                                                                                                                                                                                                                    self.var_dob.get(),
-                                                                                                                                                                                                                    self.var_doj.get(),
-                                                                                                                                                                                                                    self.var_idproofcomb.get(),
-                                                                                                                                                                                                                    self.var_gender.get(),
-                                                                                                                                                                                                                    self.var_phone.get(),
-                                                                                                                                                                                                                    self.var_country.get(),
-                                                                                                                                                                                                                    self.var_salary.get(), 
-                                                                                                                                                                                                                    self.var_idproof.get()                                                                                                 
-                                                                                                                                                                                                                    ))  
+                                                                                                                                                                                        ))  
                 else:           
                     if not update:
                         return

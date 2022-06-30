@@ -1,5 +1,11 @@
+from importlib.resources import contents
+from multiprocessing import parent_process
+from multiprocessing.sharedctypes import Value
+from re import search
+from sqlite3 import Row
 from tkinter import *
 from tkinter import ttk
+from turtle import update
 # from turtle import title
 from PIL import Image,ImageTk
 import mysql.connector
@@ -211,13 +217,13 @@ class Employee :
         btn_add=Button(button_frame,text="Save",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
         btn_add.grid(row=0,column=0,padx=1,pady=5)
 
-        btn_update=Button(button_frame,text="Update",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
+        btn_update=Button(button_frame,text="Update",command=self.update_data,font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
         btn_update.grid(row=1,column=0,padx=1,pady=5) 
         
-        btn_delete=Button(button_frame,text="Delete",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
+        btn_delete=Button(button_frame,text="Delete",command=self.delete_data,font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
         btn_delete.grid(row=2,column=0,padx=1,pady=5)
 
-        btn_clear=Button(button_frame,text="Clear",font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
+        btn_clear=Button(button_frame,text="Clear",command=self.reset_data,font=('arial ',15,'bold'),width=13,bg='blue',fg='white')
         btn_clear.grid(row=3,column=0,padx=1,pady=5)
         
         
@@ -235,18 +241,19 @@ class Employee :
         
         #Search 
         self.var_com_search= StringVar()
-        com_txt_search=ttk.Combobox(search_frame,state="readonly",font=('arial',12,'bold'), width=18)
+        com_txt_search=ttk.Combobox(search_frame,textvariable=self.var_com_search,state="readonly",font=('arial',12,'bold'), width=18)
         com_txt_search['value']=('Select Option ','Phone','idProof')
         com_txt_search.current(0)
         com_txt_search.grid(row=0,column=1,sticky=W,padx=5)
         
-        txt_search=ttk.Entry(search_frame,width=22,font=('arial',11,'bold'))
+        self.var_search=StringVar()
+        txt_search=ttk.Entry(search_frame,textvariable=self.var_search,width=22,font=('arial',11,'bold'))
         txt_search.grid(row=0,column=2,padx=5)
 
-        btn_search=Button(search_frame,text="search",font=('arial ',11,'bold'),width=14,bg='blue',fg='white')
+        btn_search=Button(search_frame,text="search",command=self.search_data,font=('arial ',11,'bold'),width=14,bg='blue',fg='white')
         btn_search.grid(row=0,column=3,padx=5)
         
-        btn_ShowAll=Button(search_frame,text="ShowAll",font=('arial ',11,'bold'),width=14,bg='blue',fg='white')
+        btn_ShowAll=Button(search_frame,text="ShowAll",command=self.fetch_data,font=('arial ',11,'bold'),width=14,bg='blue',fg='white')
         btn_ShowAll.grid(row=0,column=4,padx=5)
         
         Stayhome=LabelFrame(search_frame,bg='white',text='Stay Home', font=('times new roman ',11 ,'bold'),fg='red')
@@ -310,6 +317,9 @@ class Employee :
 
 
         self.employee_table.pack(fill=BOTH,expand=1)
+        self.employee_table.bind("<ButtonRelease>",self.get_cursor)
+
+        self.fetch_data()
 
         #functions 
         
@@ -320,7 +330,7 @@ class Employee :
         else : 
             try:
                 conn=mysql.connector.connect(host='localhost',username='root',password='09384117841Ftm2001',_Database='`project data`')
-                my_cursor=conn.cursor
+                my_cursor=conn.cursor()
                 my_cursor.execute("inserted(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
                                                                                             self.var_dep.get(),
                                                                                             self.var_name.get(),
@@ -337,6 +347,7 @@ class Employee :
                                                                                             self.var_country.get(),
                                                                                             self.var_salary.get()  ) )
                 conn.commit()
+                self.fetch_data()
                 conn.close()
                 messagebox.showinfo('success',parent=self.root)
             except Exception as ex : 
@@ -350,14 +361,134 @@ class Employee :
         my_cursor.execute('select * from employee')
         data=my_cursor.fetchall()
         if len(data) != 0 :
-            self.employee_table(*self.employee_table.get_children())
+            self.employee_table.delete(*self.employee_table.get_children())
             for i in data :
                 self.employee_table.insert('',END,values=1)
             conn.commit()
         conn.close()
         
         
-        
+        # Get Cursur
+        def get_cursur(self,event=""):
+            cursur_row=self.employee_table.focus()
+            content=self.employee_table.item(cursur_row)
+            data=content['values']
+
+            self.var_dep.set(data[0])
+            self.var_name.set(data[1])
+            self.var_designition.set(data[2])
+            self.var_email.set(data[3])
+            self.var_address.set(data[4])
+            self.var_married.set(data[5])
+            self.var_dob.set(data[6])
+            self.var_doj.set(data[7])
+            self.var_idproofcomb.set(data[8])
+            self.var_idproof.set(data[9])
+            self.var_gender.set(data[10])
+            self.var_phone.set(data[11])
+            self.var_country.set(data[12])
+            self.var_salary.set(data[13])
+
+    def update_data(self):
+        if self.var_dep.get() == ' ' or self.var_email.get() == '' :
+            messagebox.showerror('Error', 'همه رو پرکنید ')
+        else: 
+            try:
+                update=messagebox.askyesno('Update','Are sure update this employee data')
+                if update>0:  
+                 conn=mysql.connector.connect(host='localhost',username='root',password='09384117841Ftm2001',_Database='`project data`')
+                 my_cursor=conn.cursor()
+                 my_cursor.execute('Update employee1 set Department=%s,Name=%s,Designition=%s,Address=%s,Married_status=%s,DOB=%s,DOJ=%s,id_proof_type=%s,Gender=%s,Phone=%s,Country=%s,Salary=%s where id_proof=%s',(
+
+
+                                                                                                                                                                                                                    self.var_dep.get(),
+                                                                                                                                                                                                                    self.var_name.get(),
+                                                                                                                                                                                                                    self.var_designition.get(),
+                                                                                                                                                                                                                    self.var_email.get(),
+                                                                                                                                                                                                                    self.var_address.get(),
+                                                                                                                                                                                                                    self.var_married.get(),
+                                                                                                                                                                                                                    self.var_dob.get(),
+                                                                                                                                                                                                                    self.var_doj.get(),
+                                                                                                                                                                                                                    self.var_idproofcomb.get(),
+                                                                                                                                                                                                                    self.var_gender.get(),
+                                                                                                                                                                                                                    self.var_phone.get(),
+                                                                                                                                                                                                                    self.var_country.get(),
+                                                                                                                                                                                                                    self.var_salary.get(), 
+                                                                                                                                                                                                                    self.var_idproof.get()                                                                                                 
+                                                                                                                                                                                                                    ))  
+                else:           
+                    if not update:
+                        return
+                conn.commit()
+                self.fetch_data()
+                conn.close()
+                messagebox.showinfo('Success','Employee Successfully update',parent=self.root)
+            except Exception as es:
+                 messagebox.showerror('Error',f'Due To:{str(es)}',parent=self.root)
+
+    # Delete
+    def delete_data(self):
+        if self.var_idproof.get()=="":   
+            messagebox.showerror('Error',"All fields are required")  
+        else:                
+            try:
+                Delete=messagebox.askyesno('Delete','Are you sure delete this employee',parent=self.root) 
+                if Delete>0:
+                    conn=mysql.connector.connect(host='localhost',username='root',password='09384117841Ftm2001',_Database='`project data`')
+                    my_cursor=conn.cursor()  
+                    sql='delete from employee1 where id_proof=%s'   
+                    value=(self.var_idproof.get(),)
+                    my_cursor.execute(sql,value)  
+                else:
+                    if not Delete:
+                        return
+                conn.commit()
+                self.fetch_data()
+                conn.close()
+                messagebox.showinfo('Delete','Employee Successfully Deleted',parent=self.root)
+            except Exception as es:
+                 messagebox.showerror('Error',f'Due To:{str(es)}',parent=self.root)  
+
+    # reset                                                                                                                                           
+    def reset_data(self):
+        self.var_dep.set("Select Department")
+        self.var_name.set("")
+        self.var_designition.set("")
+        self.var_email.set("")
+        self.var_address.set("")
+        self.var_married.set("Married")
+        self.var_dob.set("")
+        self.var_doj.set("")
+        self.var_idproofcomb.set("Select ID Proof")
+        self.var_idproof.set("")
+        self.var_gender.set("")
+        self.var_phone.set("")
+        self.var_country.set("")
+        self.var_salary.set("")
+
+    # search
+    def search_data(self):
+        if self.var_com_search.get()=='' or self.var_search.get()=='':
+            messagebox.showerror('Error','Please select option')
+        else:
+            try:
+                conn=mysql.connector.connect(host='localhost',username='root',password='09384117841Ftm2001',_Database='`project data`')
+                my_cursor=conn.cursor()  
+                my_cursor.execute('select * from employee where '+ str(self.var_com_search.get())+" LIKE'%"+str(self.var_search.get()+"%'"))
+                rows=my_cursor.fetchall()
+                if len(rows)!=0:
+                    self.employee_table.delete(*self.employee_table.get_children())
+                    for i in rows:
+                        self.employee_table.insert("",END,values=i)
+                conn.commit  
+                conn.close()          
+            except Exception as es:
+                 messagebox.showerror('Error',f'Due To:{str(es)}',parent=self.root)
+
+
+
+
+
         
 if __name__ == "__main__" : 
     root=Tk()

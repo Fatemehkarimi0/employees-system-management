@@ -1,15 +1,17 @@
-from importlib.resources import contents
-from multiprocessing import parent_process
-from multiprocessing.sharedctypes import Value
-from re import search
-from sqlite3 import Row
+# from importlib.resources import contents
+# from multiprocessing import parent_process
+# from multiprocessing.sharedctypes import Value
+# from re import search
+# from sqlite3 import Row
 from tkinter import *
 from tkinter import ttk
-from turtle import update
+# from turtle import update
 # from turtle import title
-from PIL import Image,ImageTk
+# from PIL import Image,ImageTk
 import mysql.connector
 from tkinter import messagebox
+# from functools import partial
+
 
 class Employee :
     def __init__(self,root) :
@@ -256,14 +258,14 @@ class Employee :
         btn_ShowAll=Button(search_frame,text="ShowAll",command=self.fetch_data,font=('arial ',11,'bold'),width=14,bg='blue',fg='white')
         btn_ShowAll.grid(row=0,column=4,padx=5)
         
-        Stayhome=LabelFrame(search_frame,bg='white',text='Stay Home', font=('times new roman ',11 ,'bold'),fg='red')
-        Stayhome.place(x=780,y=0,width=600,height=30)
+        # Stayhome=LabelFrame(search_frame,bg='white',text='Stay Home', font=('times new roman ',11 ,'bold'),fg='red')
+        # Stayhome.place(x=780,y=0,width=600,height=30)
         
-        img_logo_mask = Image.open(r'college_Images/safari2.jpg')
-        img_logo_mask=img_logo_mask.resize((50,50),Image.Resampling.LANCZOS)
-        self.photo_logo_mask=ImageTk.PhotoImage(img_logo_mask)    
-        self.logo=Label(self.root,image=self.photo_logo_mask)
-        self.logo.place(x=900,y=500,width=50,height=30)
+        # img_logo_mask = Image.open(r'college_Images/safari2.jpg')
+        # img_logo_mask=img_logo_mask.resize((50,50),Image.Resampling.LANCZOS)
+        # self.photo_logo_mask=ImageTk.PhotoImage(img_logo_mask)    
+        # self.logo=Label(self.root,image=self.photo_logo_mask)
+        # self.logo.place(x=900,y=500,width=50,height=30)
         
         
         # == Employee Table ==
@@ -317,8 +319,7 @@ class Employee :
 
 
         self.employee_table.pack(fill=BOTH,expand=1)
-        self.employee_table.bind("<ButtonRelease>",self.get_cursor)
-
+        self.employee_table.bind("<ButtonRelease>",self.get_cursur())
         self.fetch_data()
 
         #functions 
@@ -356,7 +357,7 @@ class Employee :
     
     #fetch  Data 
     def fetch_data(self) : 
-        conn=mysql.connentor.connect(host='localhost', username='root',password='09384117841Ftm2001')
+        conn=mysql.connector.connect(host='localhost', username='root',password='09384117841Ftm2001')
         my_cursor =conn.cursor()
         my_cursor.execute('select * from employee')
         data=my_cursor.fetchall()
@@ -472,9 +473,33 @@ class Employee :
 
 
 
-
-        
-if __name__ == "__main__" : 
+def validateLogin():
     root=Tk()
     obj= Employee(root)
     root.mainloop()
+
+#window
+tkWindow = Tk()  
+tkWindow.geometry('400x150')  
+tkWindow.title('Login')
+
+#username label and text entry box
+usernameLabel = Label(tkWindow, text="User Name").grid(row=0, column=0)
+username = StringVar()
+usernameEntry = Entry(tkWindow, textvariable=username).grid(row=0, column=1)  
+
+#password label and password entry box
+passwordLabel = Label(tkWindow,text="Password").grid(row=1, column=0)  
+password = StringVar()
+passwordEntry = Entry(tkWindow, textvariable=password, show='*').grid(row=1, column=1)  
+
+#login button
+loginButton = Button(tkWindow, text="Login", command=validateLogin ).grid(row=4, column=0)  
+
+
+        
+if __name__ == "__main__" : 
+        tkWindow.mainloop()
+        exit()
+
+ 

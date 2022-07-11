@@ -1,6 +1,5 @@
 
 from tkinter import *
-import PIL
 from PIL import ImageTk
 from PIL import Image
 
@@ -13,12 +12,11 @@ class LoginForm:
         self.window.resizable(0, 0)
 
         # =================== Background Image ===================
-        self.bg_frame = Image.open(
-            'img\\background img\\background img.png')    
-        photo = ImageTk.PhotoImage(self.bg_frame)
-        self.bg_panel = Label(self.window, image=photo)
-        self.bg_panel.image = photo
-        self.bg_panel.pack(fill='both', expand='yes' )
+        # self.bg_frame = Image.open('img/background img/background img.png')    
+        # photo = ImageTk.PhotoImage(self.bg_frame)
+        # self.bg_panel = Label(self.window, image=photo)
+        # self.bg_panel.image = photo
+        # self.bg_panel.pack(fill='both', expand='yes' )
 
         # =================== Login Frame ===================
         self.lgn_frame = Frame(self.window, bg='white', width='980',
@@ -27,12 +25,12 @@ class LoginForm:
         self.lgn_frame.place(x=278, y=95)
         
         # =================== Left Side Image ===================
-        self.side_image = Image.open('img\\left side img\\left img.jpg')
+        # self.side_image = Image.open('img\\left side img\\left img.jpg')
             
-        photo = ImageTk.PhotoImage(self.side_image)
-        self.side_image_label = Label(self.lgn_frame, image=photo, bg='white')
-        self.side_image_label.image = photo
-        self.side_image_label.place(x=5, y=160)
+        # photo = ImageTk.PhotoImage(self.side_image)
+        # self.side_image_label = Label(self.lgn_frame, image=photo, bg='white')
+        # self.side_image_label.image = photo
+        # self.side_image_label.place(x=5, y=160)
 
         # =================== Sign In Image ===================
         self.sign_in_lable = Label(
@@ -92,17 +90,17 @@ class LoginForm:
 
         # =================== Show/Hide Password ===================
 
-        self.show_image = Image.open('img\\show and hide password img\\show.png')
-        self.photo1 = ImageTk.PhotoImage(self.show_image)
-        self.show_button = Button(
-        self.lgn_frame, image=self.photo1, bg='white', activebackground='white', cursor='hand2', bd=0, command=self.show)
+        # self.show_image = Image.open('img\\show and hide password img\\show.png')
+        # self.photo1 = ImageTk.PhotoImage(self.show_image)
+        # self.show_button = Button(
+        # self.lgn_frame, image=self.photo1, bg='white', activebackground='white', cursor='hand2', bd=0, command=self.show)
 
-        self.show_button.image = self.photo1
-        self.show_button.place(x=830, y=372)
+        # self.show_button.image = self.photo1
+        # self.show_button.place(x=830, y=372)
 
-        self.hide_image = Image.open(
-                'img\\show and hide password img\\hide.png')
-        self.photo = ImageTk.PhotoImage(self.hide_image)
+        # self.hide_image = Image.open(
+        #         'img\\show and hide password img\\hide.png')
+        # self.photo = ImageTk.PhotoImage(self.hide_image)
 
     def show(self):
             self.hide_button = Button(

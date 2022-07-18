@@ -1,0 +1,6 @@
+SSID: AndroidAP0CC9
+Password: odxk2132
+SSID: TP-LINK_A53902
+Password: 13842001MMD
+SSID: sarayetel4
+Password: 22112000m

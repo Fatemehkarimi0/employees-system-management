@@ -44,11 +44,11 @@ class Employee :
 
 
         # title 
-        lbl_title=Label(self.root, text="Employee system management" , font=('times new roman ',25 ,'bold'),fg='#8E30EF',bg='white')
+        lbl_title=Label(self.root, text="Employee system management" , font=('times new roman ',25 ,'bold'),fg='#161185',bg='white')
         lbl_title.place(x=-990,y=0,width=2530,height=50)
         # Main Frame
         Main_frame=Frame(self.root)
-        Main_frame.place(x=10,y=70,width=1500,height=5560)
+        Main_frame.place(x=16,y=72,width=1500,height=699)
         
         # upper Frame
         upper_frame=Frame(Main_frame,bg='white')
@@ -87,94 +87,95 @@ class Employee :
 
          # Dob
         lbl_dob=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOB:",bg='white')
-        lbl_dob.grid(row=0,column=1,sticky=W,padx=100,pady=10)
+        lbl_dob.grid(row=0,column=1,sticky=W,padx=45,pady=10)
 
         txt_dob=ttk.Entry(upper_frame,textvariable=self.var_dob,width=22, font=('arial ',11 ,'bold'))
-        txt_dob.grid(row=1,column=1,padx=100,pady=10)
+        txt_dob.grid(row=1,column=1,padx=45,pady=2)
 
         # Doj
         lbl_doj=Label(upper_frame,font=('arial ',12 ,'bold'),text="DOJ : ",bg='white')
-        lbl_doj.grid(row=2,column=1,sticky=W,padx=100,pady=10)
+        lbl_doj.grid(row=2,column=1,sticky=W,padx=45,pady=10)
 
         txt_doj=ttk.Entry(upper_frame,textvariable=self.var_doj,width=22, font=('arial ',11 ,'bold'))
-        txt_doj.grid(row=3,column=1,padx=100,pady=10)
+        txt_doj.grid(row=3,column=1,padx=45,pady=2)
 
         # Id Proof
         lbl_proof=Label(upper_frame,font=('arial ',12 ,'bold'),text="ID Proof : ",bg='white')
-        lbl_proof.grid(row=4,column=1,sticky=W,padx=100,pady=10)
+        lbl_proof.grid(row=4,column=1,sticky=W,padx=45,pady=10)
 
         txt_proof=ttk.Entry(upper_frame,textvariable= self.var_idproof,font=('arial ',11 ,'bold'),width=22)
-        txt_proof.grid(row=5,column=1,padx=100,pady=10)
+        txt_proof.grid(row=5,column=1,padx=45,pady=2)
 
         # country
         lbl_country=Label(upper_frame,font=('arial ',12 ,'bold'),text="Country:",bg='white')
-        lbl_country.grid(row=6,column=1,sticky=W,padx=100,pady=10)
+        lbl_country.grid(row=6,column=1,sticky=W,padx=45,pady=10)
 
         txt_country=ttk.Entry(upper_frame,textvariable=self.var_country,font=('arial ',11 ,'bold'),width=22)
-        txt_country.grid(row=7,column=1,padx=100,pady=10)
+        txt_country.grid(row=7,column=1,padx=45,pady=2)
        
         # Address
         lbl_address=Label(upper_frame,font=('arial ',12 ,'bold'),text="Address : ",bg='white')
-        lbl_address.grid(row=0,column=2,sticky=W,padx=100,pady=10)
+        lbl_address.grid(row=0,column=2,sticky=W,padx=17,pady=10)
 
         txt_address=ttk.Entry(upper_frame,textvariable=self.var_address,width=22, font=('arial ',11 ,'bold'))
-        txt_address.grid(row=1,column=2,padx=100,pady=10)
+        txt_address.grid(row=1,column=2,padx=17,pady=10)
 
         # phone
         lbl_phone=Label(upper_frame,font=('arial ',12 ,'bold'),text="Phone No:",bg='white')
-        lbl_phone.grid(row=2,column=2,sticky=W,padx=100,pady=10)
+        lbl_phone.grid(row=2,column=2,sticky=W,padx=17,pady=10)
 
         txt_phone=ttk.Entry(upper_frame,textvariable=self.var_phone,font=('arial ',11 ,'bold'),width=22)
-        txt_phone.grid(row=3,column=2,padx=100,pady=10)
+        txt_phone.grid(row=3,column=2,padx=17,pady=10)
 
         # CTC
         lbl_ctc=Label(upper_frame,font=('arial ',12 ,'bold'),text="Salary(CTC):",bg='white')
-        lbl_ctc.grid(row=4,column=2,sticky=W,padx=100,pady=10)
+        lbl_ctc.grid(row=4,column=2,sticky=W,padx=17,pady=10)
 
         txt_country=ttk.Entry(upper_frame,textvariable=self.var_salary, font=('arial ',11 ,'bold'),width=22)
-        txt_country.grid(row=5,column=2,padx=100,pady=10)
+        txt_country.grid(row=5,column=2,padx=17,pady=10)
         
         # gender
         lbl_gender=Label(upper_frame,font=('arial ',12 ,'bold'),text="gender:",bg='white')
-        lbl_gender.grid(row=6,column=2,sticky=W,padx=100,pady=10)
-        com_txt_gender=ttk.Combobox(upper_frame,textvariable=self.var_gender,state="readonly",font=('arial ',11 ,'bold'),width=22)
+        lbl_gender.grid(row=6,column=2,sticky=W,padx=17,pady=10)
+        com_txt_gender=ttk.Combobox(upper_frame,textvariable=self.var_gender,state="readonly",font=('arial ',11 ,'bold'),width=20)
         com_txt_gender['value']=("Male","Female","Other")
         com_txt_gender.current(0)
-        com_txt_gender.grid(row=7,column=2,sticky=W,padx=100,pady=10)
+        com_txt_gender.grid(row=7,column=2,sticky=W,padx=17,pady=10)
 
      
 
         # img Frame
-        img_frame= Image.open('college_Images/background img.png')
-        img_frame=img_frame.resize((100,100),Image.Resampling.LANCZOS)
+        img_frame= Image.open('college_Images/797866e79ccfaf11704e84cce10ef466.jpg')
+        img_frame=img_frame.resize((500,335),Image.Resampling.LANCZOS)
         # img_frame.place(x=1200,y=50,width=250,height=370)
         self.photo=ImageTk.PhotoImage(img_frame)    
         self.img_frame=Label(upper_frame,image=self.photo)
-        self.img_frame.place(x=1075,y=50,width=100,height=100)
+        self.img_frame.place(x=966,y=20)
         
         # Button Frame
         button_frame=Frame(upper_frame,bg='white')
-        button_frame.place(x=0,y=390,width=1560,height=210)
+        button_frame.place(x=736,y=0,width=200,height=500)
 
-        btn_add=Button(button_frame,text="Save",command=self.add_data,font=('arial ',10,'bold'),width=12,bg='#8E30EF',fg='white')
-        btn_add.grid(row=0,column=0,padx=(5,25),pady=5)
+        btn_add=Button(button_frame,text="Save",font=('arial ',14,'bold'),width=14,bg='#161185',command=self.add_data,fg='white', activebackground='#161185', cursor='hand2')
+        btn_add.grid(row=1,column=0,padx=0,pady=47)
+        # 
+        btn_update=Button(button_frame,text="Update",font=('arial ',14,'bold'),width=14,command=self.update_data,bg='#4143E6',fg='white', activebackground='#4143E6', cursor='hand2')
+        btn_update.grid(row=2,column=0,padx=0,pady=2) 
+        # 
+        btn_delete=Button(button_frame,text="Delete",font=('arial ',14,'bold'),width=14,bg='#E54B3F',command=self.delete_data,fg='white', activebackground='#E54B3F', cursor='hand2')
+        btn_delete.grid(row=3,column=0,padx=0,pady=49)
+        # 
 
-        btn_update=Button(button_frame,text="Update",command=self.update_data,font=('arial ',10,'bold'),width=12,bg='#6616F8',fg='white')
-        btn_update.grid(row=0,column=1,padx=25,pady=5) 
-        
-        btn_delete=Button(button_frame,text="Delete",command=self.delete_data,font=('arial ',10,'bold'),width=12,bg='red',fg='white')
-        btn_delete.grid(row=0,column=2,padx=25,pady=5)
-
-        btn_clear=Button(button_frame,text="Clear",command=self.reset_data,font=('arial ',10,'bold'),width=12,bg='white',fg='gray')
-        btn_clear.grid(row=0,column=3,padx=25,pady=5)
-        
+        btn_clear=Button(button_frame,text="Clear",font=('arial ',14,'bold'),width=14,bg='#92B3FA',command=self.reset_data,fg='white', activebackground='#92B3FA', cursor='hand2')      
+        btn_clear.grid(row=4,column=0,padx=0,pady=2)
+        # 
         # down Frame
         down_frame=Frame(Main_frame,bg='white')
-        down_frame.place(x=10,y=450,width=1470,height=1270)
+        down_frame.place(x=10,y=390,width=1470,height=1200)
         
         # search Frame
         search_frame=Frame(down_frame,bg='white')
-        search_frame.place(x=10,y=0,width=1460,height=80)
+        search_frame.place(x=8,y=0,width=1460,height=80)
         search_txt=Label(search_frame,font=('arial ',12 ,'bold'),text="Search  :",bg='white')
         search_txt.grid(row=0,column=0,sticky=W,padx=0,pady=0)
       
@@ -183,32 +184,23 @@ class Employee :
         com_txt_search=ttk.Combobox(search_frame,textvariable=self.var_com_search,state="readonly",font=('arial',12,'bold'), width=18)
         com_txt_search['value']=('Select Option ','Phone','id_proof')
         com_txt_search.current(0)
-        com_txt_search.grid(row=1,column=0,sticky=W,padx=5)
+        com_txt_search.grid(row=1,column=0,sticky=W,padx=1)
         
         self.var_search=StringVar()
         txt_search=ttk.Entry(search_frame,textvariable=self.var_search,width=22,font=('arial',11,'bold'))
-        txt_search.grid(row=1,column=1,padx=5)
+        txt_search.grid(row=1,column=1,padx=(52,10))
 
-        btn_search=Button(search_frame,text="search",command=self.search_data,font=('arial ',11,'bold'),width=18,bg='blue',fg='white')
-        btn_search.grid(row=1,column=3,padx=(5,720))
-        
-        btn_ShowAll=Button(search_frame,text="ShowAll",command=self.fetch_data,font=('arial ',11,'bold'),width=18,bg='blue',fg='white')
-        btn_ShowAll.grid(row=1,column=5,padx=5)
-        
-        # Stayhome=LabelFrame(search_frame,bg='white',text='Stay Home', font=('times new roman ',11 ,'bold'),fg='red')
-        # Stayhome.place(x=780,y=0,width=600,height=30)
-        
-        # img_logo_mask = Image.open(r'college_Images/safari2.jpg')
-        # img_logo_mask=img_logo_mask.resize((50,50),Image.Resampling.LANCZOS)
-        # self.photo_logo_mask=ImageTk.PhotoImage(img_logo_mask)    
-        # self.logo=Label(self.root,image=self.photo_logo_mask)
-        # self.logo.place(x=900,y=500,width=50,height=30)
-        
+        btn_search=Button(search_frame,text="Search",font=('arial ',12,'bold'),width=15,command=self.search_data,bg='#161185',fg='white', activebackground='#161185', cursor='hand2')
+        btn_search.grid(row=1,column=2,padx=20)
+        # 
+        btn_ShowAll=Button(search_frame,text="ShowAll",font=('arial ',12,'bold'),width=15,command=self.fetch_data,bg='#161185',fg='white', activebackground='#161185', cursor='hand2')
+        btn_ShowAll.grid(row=1,column=5,padx=645)
+        # 
         
         # == Employee Table ==
         # Table Frame
         table_frame=Frame(down_frame,bd=3,relief=RIDGE)
-        table_frame.place(x=0,y=60,width=1470,height=200)
+        table_frame.place(x=7,y=65,width=1470,height=200)
         
         
         scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
@@ -382,7 +374,6 @@ class Employee :
         self.var_designition.set("")
         self.var_email.set("")
         self.var_address.set("")
-        self.var_married.set("Married")
         self.var_dob.set("")
         self.var_doj.set("")
         self.var_idproofcomb.set("Select ID Proof")
